@@ -22,3 +22,14 @@ variable "openid_provider_arn" {
   description = "The ARN of the OpenID provider"
   type        = string
 }
+variable "enable_ebs_csi_driver" {
+  description = "Enable EBS CSI driver"
+  type        = bool
+  default     = true
+}
+
+variable "ebs_csi_driver_helm_version" {
+  description = "EBS CSI driver Helm chart version"
+  type        = string
+  default     = "2.35.1"
+}
