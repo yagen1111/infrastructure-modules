@@ -13,7 +13,7 @@ resource "helm_release" "ingress_nginx" {
   set = [
     {
       name  = "controller.service.type"
-      value = "NodePort"
+      value = "LoadBalancer"
     },
     {
       name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-type"
