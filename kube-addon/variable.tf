@@ -33,3 +33,23 @@ variable "ebs_csi_driver_helm_version" {
   type        = string
   default     = "2.35.1"
 }
+
+
+variable "enable_aws_load_balancer_controller" {
+  description = "Enable AWS Load Balancer Controller"
+  type        = bool
+  default     = true
+}
+
+variable "enable_ingress_nginx" {
+  description = "Enable Ingress Nginx"
+  type        = bool  
+  default     = true
+}
+
+
+variable "ssl_certificate_arn" {
+  description = "ACM SSL certificate ARN"
+  type        = string
+  default     = ""
+}
