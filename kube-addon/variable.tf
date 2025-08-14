@@ -53,3 +53,12 @@ variable "ssl_certificate_arn" {
   type        = string
   default     = ""
 }
+variable "vpc_id" {
+  description = "VPC ID where the EKS cluster is deployed"
+  type        = string
+}
+
+variable "region" {
+  description = "AWS region"
+  type        = string
+}
