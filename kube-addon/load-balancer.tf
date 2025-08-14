@@ -52,6 +52,10 @@ resource "helm_release" "aws_load_balancer_controller" {
       value = var.eks_name
     },
     {
+      name  = "webhookConfig.create"
+      value = "false"
+    },
+    {
       name  = "serviceAccount.create"
       value = "true"
     },
@@ -66,3 +70,4 @@ resource "helm_release" "aws_load_balancer_controller" {
   ]
 
 }
+
