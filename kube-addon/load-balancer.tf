@@ -33,7 +33,7 @@ resource "aws_iam_role_policy_attachment" "aws_load_balancer_controller" {
   count = var.enable_aws_load_balancer_controller ? 1 : 0
 
   role       = aws_iam_role.aws_load_balancer_controller[0].name
-  policy_arn = "arn:aws:iam::aws:policy/ElasticLoadBalancingFullAccess"
+  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
 }
 
 resource "helm_release" "aws_load_balancer_controller" {
@@ -64,4 +64,5 @@ resource "helm_release" "aws_load_balancer_controller" {
       value = aws_iam_role.aws_load_balancer_controller[0].arn
     }
   ]
+
 }
