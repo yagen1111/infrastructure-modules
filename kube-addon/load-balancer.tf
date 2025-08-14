@@ -53,7 +53,7 @@ resource "helm_release" "aws_load_balancer_controller" {
     },
     {
       name  = "webhookConfig.create"
-      value = "false"
+      value = "true"
     },
     {
       name  = "serviceAccount.create"
@@ -70,4 +70,5 @@ resource "helm_release" "aws_load_balancer_controller" {
   ]
 
 }
+
 
