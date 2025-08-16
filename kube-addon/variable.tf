@@ -62,3 +62,10 @@ variable "region" {
   description = "AWS region"
   type        = string
 }
+# ... existing code ...
+
+variable "enable_external_secrets" {
+  description = "Enable External Secrets Operator"
+  type        = bool
+  default     = true
+}
