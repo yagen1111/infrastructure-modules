@@ -36,7 +36,7 @@ resource "aws_iam_role_policy" "external_secrets" {
       {
         Effect = "Allow"
         Action = [
-          "secretsmanager:*
+          "secretsmanager:*"
         ]
         Resource = "*"
       }
