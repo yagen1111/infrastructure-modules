@@ -32,6 +32,10 @@ resource "helm_release" "ingress_nginx" {
       value = "internal"
     },
     {
+      name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-subnets"
+      value = join(",", var.private_subnets)
+    },
+    {
       name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-backend-protocol"
       value = "http"
     }
