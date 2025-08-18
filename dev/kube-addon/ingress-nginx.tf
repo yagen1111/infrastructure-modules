@@ -44,3 +44,4 @@ resource "helm_release" "ingress_nginx" {
       value = "443"
     }
   ]
+}
