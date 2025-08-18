@@ -28,6 +28,10 @@ resource "helm_release" "ingress_nginx" {
       value = "https"
     },
     {
+      name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-scheme"
+      value = "internal"
+    },
+    {
       name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-backend-protocol"
       value = "http"
     }
