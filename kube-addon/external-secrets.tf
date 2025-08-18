@@ -6,20 +6,17 @@ resource "aws_iam_role" "external_secrets" {
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
-    Statement = [
-      {
-        Effect = "Allow"
-        Principal = {
-          Federated = var.openid_provider_arn
-        }
-        Action = "sts:AssumeRoleWithWebIdentity"
-        Condition = {
-          StringEquals = {
-            "${replace(var.openid_provider_arn, "arn:aws:iam::*:oidc-provider/", "")}:sub" = "system:serviceaccount:external-secrets:external-secrets"
-          }
+    Statement = [{
+      Effect = "Allow"
+      Principal = { Federated = var.openid_provider_arn }
+      Action = "sts:AssumeRoleWithWebIdentity"
+      Condition = {
+        StringEquals = {
+          "${regexreplace(var.openid_provider_arn, "^arn:aws:iam::[0-9]+:oidc-provider/", "")}:sub" = "system:serviceaccount:external-secrets:external-secrets"
+          "${regexreplace(var.openid_provider_arn, "^arn:aws:iam::[0-9]+:oidc-provider/", "")}:aud" = "sts.amazonaws.com"
         }
       }
-    ]
+    }]
   })
 }
 
