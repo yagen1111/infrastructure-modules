@@ -12,8 +12,8 @@ resource "aws_iam_role" "external_secrets" {
       Action = "sts:AssumeRoleWithWebIdentity"
       Condition = {
         StringEquals = {
-          "${regexreplace(var.openid_provider_arn, "^arn:aws:iam::[0-9]+:oidc-provider/", "")}:sub" = "system:serviceaccount:external-secrets:external-secrets"
-          "${regexreplace(var.openid_provider_arn, "^arn:aws:iam::[0-9]+:oidc-provider/", "")}:aud" = "sts.amazonaws.com"
+          "${join("/", slice(split("/", var.openid_provider_arn), 1, length(split("/", var.openid_provider_arn))))}:sub" = "system:serviceaccount:external-secrets:external-secrets"
+          "${join("/", slice(split("/", var.openid_provider_arn), 1, length(split("/", var.openid_provider_arn))))}:aud" = "sts.amazonaws.com"
         }
       }
     }]
