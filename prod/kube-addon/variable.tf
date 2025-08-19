@@ -69,3 +69,7 @@ variable "enable_external_secrets" {
   type        = bool
   default     = true
 }
+  variable "private_subnets" {
+    description = "Private subnet IDs for internal load balancers"
+    type        = list(string)
+  }

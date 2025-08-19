@@ -40,6 +40,10 @@ resource "helm_release" "ingress_nginx" {
       value = var.ssl_certificate_arn
     },
     {
+      name  = "controller.replicaCount"
+      value = "2"  
+    },
+    {
       name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-ssl-ports"
       value = "443"
     }
