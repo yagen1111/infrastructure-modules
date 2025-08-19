@@ -13,35 +13,11 @@ resource "helm_release" "ingress_nginx" {
   set = [
     {
       name  = "controller.service.type"
-      value = "LoadBalancer"
+      value = "NodePort"
     },
     {
-      name  = "controller.service.loadBalancerClass"
-      value = "service.k8s.aws/nlb"
-    },
-    {
-      name  ="controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-type"
-      value = "external"
-    },
-    {
-      name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-nlb-target-type"
-      value = "ip"
-    },
-    {
-      name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-scheme"
-      value = "internal"
-    },
-    {
-      name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-backend-protocol"
-      value = "tcp"
-    },
-    {
-      name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-ssl-cert"
-      value = var.ssl_certificate_arn
-    },
-    {
-      name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/aws-load-balancer-ssl-ports"
-      value = "443"
+      name  = "controller.replicaCount"
+      value = "2"  
     }
   ]
 }
